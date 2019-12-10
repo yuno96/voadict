@@ -345,7 +345,8 @@ class Controller():
 		self.root.protocol('WM_DELETE_WINDOW', self.onQuit) 
 
 
-		self.keyList = [('<Control-;>', self.keyPlayOrStop),
+		keystr = '<Control-space>' if sys.platform=='linux' else '<Control-p'
+		self.keyList = [(keystr, self.keyPlayOrStop),
 				('<Control-bracketleft>', self.keyReplay),
 				('<Control-bracketright>', self.keyFwplay)]
 		for keyStr, act in self.keyList:
