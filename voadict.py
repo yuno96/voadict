@@ -331,9 +331,9 @@ class Controller():
 				('Change...',  0, self.onChange)])
 		]
 
-		btnAttr = [('>II',   self.onPlayOrStop, {'side': tk.LEFT}),
-				('<<',   self.onFwplay, {'side': tk.LEFT}),
-				('>>',  self.onReplay, {'side': tk.LEFT})]
+		btnAttr = [('>II', self.onPlayOrStop, {'side': tk.LEFT}),
+				('<<', self.onReplay, {'side': tk.LEFT}),
+				('>>', self.onFwplay, {'side': tk.LEFT})]
 
 		self.root = tk.Tk()
 		self.noteName = noteName
@@ -345,7 +345,7 @@ class Controller():
 		self.root.protocol('WM_DELETE_WINDOW', self.onQuit) 
 
 
-		self.keyList = [('<Control-space>', self.keyPlayOrStop),
+		self.keyList = [('<Control-;>', self.keyPlayOrStop),
 				('<Control-bracketleft>', self.keyReplay),
 				('<Control-bracketright>', self.keyFwplay)]
 		for keyStr, act in self.keyList:
@@ -355,10 +355,10 @@ class Controller():
 		self.onPlayOrStop()
 
 	def onReplay(self):
-		self.model.goPos(0, +2)
+		self.model.goPos(0, -2)
 
 	def onFwplay(self):
-		self.model.goPos(0, -2)
+		self.model.goPos(0, +2)
 
 	def keyReplay(self, evt):
 		self.onReplay()
