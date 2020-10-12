@@ -431,7 +431,6 @@ class Controller():
 
 	def getContentsList(self):
 		page = requests.get('https://learningenglish.voanews.com/z/952')
-		#soup = bs4.BeautifulSoup(page.text, 'lxml')
 		soup = bs4.BeautifulSoup(page.text, 'html.parser')
 
 		voalist = []
